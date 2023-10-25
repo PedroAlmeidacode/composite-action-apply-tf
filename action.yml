@@ -15,7 +15,7 @@ runs:
     - name: Apply tf
       if: inputs.plan-file-path != 'null'
       id: apply-with-file
-      run: terraform apply ${{ inputs.plan-file-path }} --auto-approve
+      run: terraform apply ${{ inputs.plan-file-path }}
       shell: bash
     - name: Apply tf
       if: inputs.plan-file-path == 'null'

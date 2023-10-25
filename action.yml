@@ -12,6 +12,9 @@ runs:
     - name: Print Terraform version
       run: terraform --version
       shell: bash
+    - name: Init providers
+      run: terraform init
+      shell: bash
     - name: Apply tf
       if: inputs.plan-file-path != 'null'
       id: apply-with-file

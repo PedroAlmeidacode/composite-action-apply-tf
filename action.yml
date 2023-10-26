@@ -5,6 +5,9 @@ inputs:
     description: 'Path to the file containing the plan'
     required: false
     default: 'null'
+  workspace:
+    description: 'Defines the workspace to create and to insert infra'
+    required: true
 
 runs:
   using: 'composite'
@@ -14,6 +17,9 @@ runs:
       shell: bash
     - name: Init providers
       run: terraform init
+      shell: bash
+    - name: Init workspace
+      run: terraform workspace new ${{ inputs.workspace }} && terraform workspace select ${{ inputs.workspace }}
       shell: bash
     - name: Apply tf
       if: inputs.plan-file-path != 'null'
